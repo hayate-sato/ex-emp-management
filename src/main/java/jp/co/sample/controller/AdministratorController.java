@@ -64,7 +64,7 @@ public class AdministratorController {
 			String failed = "メールアドレスまたはパスワードが不正です。";
 			model.addAttribute("failed", failed);
 
-			return "login";
+			return "administrator/login";
 
 		}
 		session.setAttribute("administratorName", administrator.getName());
