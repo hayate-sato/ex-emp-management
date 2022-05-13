@@ -6,6 +6,12 @@ public class Administrator {
 	private String mailAddress;
 	private String password;
 
+	@Override
+	public String toString() {
+		return "Administration [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ",password=" + password
+				+ "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}
