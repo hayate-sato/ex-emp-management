@@ -44,7 +44,7 @@ public class EmployeeController {
 
 	@RequestMapping("/update")
 	public String update(UpdateEmployeeForm form) {
-		System.out.println(form);
+
 		int idInt = Integer.parseInt(form.getId());
 		Employee employee = employeeServise.showDetail(idInt);
 
