@@ -44,8 +44,12 @@ public class EmployeeController {
 
 	@RequestMapping("/update")
 	public String update(UpdateEmployeeForm form) {
-		Employee employee = employeeServise.showDetail(Integer.parseInt(form.getId()));
-		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+		System.out.println(form);
+		int idInt = Integer.parseInt(form.getId());
+		Employee employee = employeeServise.showDetail(idInt);
+
+		int dependentsInt = Integer.parseInt(form.getDependentsCount());
+		employee.setDependentsCount(dependentsInt);
 
 		employeeServise.update(employee);
 		return "redirect:/employee/showList";
