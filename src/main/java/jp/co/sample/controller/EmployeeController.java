@@ -2,6 +2,8 @@ package jp.co.sample.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +22,15 @@ import jp.co.sample.service.EmployeeService;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeServise;
-
+	@Autowired
+	private HttpSession session;
 	@RequestMapping("/showList")
 	public String showList(Model model) {
+
+		if (session.getAttribute("administratorName") == null) {
+			return "redirect:/";
+			
+		}
 
 		List<Employee> employeeList = employeeServise.showList();
 
@@ -38,6 +46,10 @@ public class EmployeeController {
 
 	@RequestMapping("/showDetail")
 	public String showDetail(String id, Model model) {
+		if (session.getAttribute("administratorName") == null) {
+			return "redirect:/";
+
+		}
 
 		Employee employee = employeeServise.showDetail(Integer.parseInt(id));
 
@@ -58,7 +70,7 @@ public class EmployeeController {
 		int dependentsInt = Integer.parseInt(form.getDependentsCount());
 		employee.setDependentsCount(dependentsInt);
 
-		employeeServise.update(employee);
+		
 		return "redirect:/employee/showList";
 	}
 }
