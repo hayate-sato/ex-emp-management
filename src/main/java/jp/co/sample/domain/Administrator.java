@@ -6,6 +6,9 @@ public class Administrator {
 	private String mailAddress;
 	private String password;
 
+	public Administrator() {
+
+	}
 
 	@Override
 	public String toString() {
@@ -42,6 +45,14 @@ public class Administrator {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Administrator(Integer id, String name, String mailAddress, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.mailAddress = mailAddress;
 		this.password = password;
 	}
 
